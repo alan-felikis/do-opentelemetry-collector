@@ -5,14 +5,17 @@ global:
 
 scrape_configs:
 
- - job_name: 'spring-secure'
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'spring-secure'
     metrics_path: '/api/management/prometheus'
     scheme: https
     basic_auth:
       username: '${SPRING_USER}'
       password: '${SPRING_PASS}'
     static_configs:
-      - targets: ['www.geoinfra.prefeitura.sp.gov.br']
+      - targets: ['SEU_SPRING_SERVICE.railway.internal:8080']
 
 
   - job_name: 'local-prometheus'
