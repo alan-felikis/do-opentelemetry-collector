@@ -4,6 +4,17 @@ global:
     monitor: 'railway-prometheus'
 
 scrape_configs:
+
+ - job_name: 'spring-secure'
+    metrics_path: '/api/management/prometheus'
+    scheme: https
+    basic_auth:
+      username: '${SPRING_USER}'
+      password: '${SPRING_PASS}'
+    static_configs:
+      - targets: ['www.geoinfra.prefeitura.sp.gov.br']
+
+
   - job_name: 'local-prometheus'
     scrape_interval: 5s
     static_configs:
