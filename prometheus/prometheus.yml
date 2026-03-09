@@ -17,7 +17,6 @@ scrape_configs:
     static_configs:
       - targets: ['SEU_SPRING_SERVICE.railway.internal:8080']
 
-
   - job_name: 'local-prometheus'
     scrape_interval: 5s
     static_configs:
